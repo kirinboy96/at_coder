@@ -1,0 +1,17 @@
+import sys
+input = sys.stdin.readline
+N = int(input())
+XL = []
+for i in range(N):
+    x,l = map(int,input().split())
+    XL.append([l+x,x-l])
+XL.sort()
+Ans = []
+Ans.append(XL[0])
+cnt = 1
+for i in range(1,N):
+    incxl,decxl = XL[i][0],XL[i][1]
+    if incxl >= Ans[-1][1] and decxl >= Ans[-1][0]:
+        cnt += 1
+        Ans.append(XL[i])
+print(cnt)
